@@ -29,15 +29,10 @@
         untrusted-spec="{{ config('redoc.config.trust') }}"
     ></redoc>
 
-    @if (config('redoc.alfred.enabled'))
-      <div
-        class="getalfred-io"
-        data-api="{{ config('redoc.alfred.project_id') }}"
-        data-auth="{{ config('redoc.alfred.api_key') }}"
-      ></div>
-      <script src="https://assets.treblle.com/alfred-embed-v3.min.js"></script>
-    @endif
+    <script type="module">
+      import { init } from "https://cdn.redoc.ly/redoc/v3.0.1/bundles/redoc.standalone.js";
 
-    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+      init("openapi/openapi.yaml");
+    </script>
   </body>
 </html>
